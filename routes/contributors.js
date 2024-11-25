@@ -6,7 +6,7 @@ const {contributorValidationRules, validate} = require('../validation/validator'
 // Call functions for the specific request
 router.get('/', contributorsCtrl.getAllContributors);
 router.get('/:id', contributorsCtrl.getSingleContributor);
-router.post('/', contributorValidationRules(), validate, contributorsCtrl.createContributor);
+router.post('/', contributorsCtrl.createContributor);
 router.put('/:id', contributorsCtrl.updateContributor);
 router.delete('/:id', contributorsCtrl.deleteContributor);
 

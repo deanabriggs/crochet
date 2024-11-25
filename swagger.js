@@ -6,7 +6,7 @@ const doc = {
         title: 'Crochet Projects API',
         description: 'Crochet Projects API'
     },
-    host: 'localhost:8000',
+    host: ['localhost:8000', 'crochet-1wd1.onrender.com'],
     schemes: ['http', 'https']
 };
 
