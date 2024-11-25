@@ -1,0 +1,6 @@
+### Get all contributors
+GET http://localhost:8000/contributors
+
+
+### Get all projects
+GET http://localhost:8000/projects
