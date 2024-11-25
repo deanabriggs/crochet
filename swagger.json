@@ -7,7 +7,7 @@
   },
   "host": "crochet-1wd1.onrender.com",
   "basePath": "/",
-  "schemes": "https",
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {
