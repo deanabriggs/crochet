@@ -9,7 +9,7 @@
     "localhost:8000",
     "crochet-1wd1.onrender.com"
   ],
-  "basePath": "/",
+  "basePath": "",
   "schemes": [
     "http",
     "https"
