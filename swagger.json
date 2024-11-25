@@ -5,11 +5,8 @@
     "description": "Crochet Projects API",
     "version": "1.0.0"
   },
-  "host": [
-    "localhost:8000",
-    "crochet-1wd1.onrender.com"
-  ],
-  "basePath": "",
+  "host": "crochet-1wd1.onrender.com",
+  "basePath": "/",
   "schemes": [
     "http",
     "https"
