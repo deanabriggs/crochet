@@ -1,6 +1,98 @@
 ### Get all contributors
 GET http://localhost:8000/contributors
 
+### Get a specific contributor
+GET http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2
+
+### Create contributor
+POST http://localhost:8000/contributors HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Patty",
+    "lastName": "Roberts",
+    "email": "patty@email.com",
+    "phone": "9167771234",
+    "joinDate": "2023-01-02",
+    "numOfProj": 6,
+    "qtyFollows": 90
+}
+
+###
+{
+    "firstName": "A",
+    "lastName": "S",
+    "email": "patty",
+    "phone": "916777123",
+    "joinDate": "adb",
+    "numOfProj": "a",
+    "qtyFollows": "b"
+}
+
+### Update contributor
+PUT http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Patty",
+    "lastName": "Roberts",
+    "email": "patty@email.com",
+    "phone": "9167771234",
+    "joinDate": "2023-01-02",
+    "numOfProj": 6,
+    "qtyFollows": 90
+}
+
+###
+{
+    "firstName": "A",
+    "lastName": "S",
+    "email": "patty",
+    "phone": "916777123",
+    "joinDate": "adb",
+    "numOfProj": "a",
+    "qtyFollows": "b"
+}
+
+### Delete contributor
+DELETE http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2 
+
+
+##############################################################################
 
 ### Get all projects
 GET http://localhost:8000/projects
+
+### Get a specific project
+GET http://localhost:8000/projects/6746c76ffcffbe849f177c6e
+
+### Create project
+POST http://localhost:8000/projects HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Stuffed Elephant",
+    "category": "Toys",
+    "yarnType": "Acrylic",
+    "yarnQty": "250 yards",
+    "needle": "I 5.5mm",
+    "picture": "",
+    "pattern": "There would be 3 pages of instructions here"
+}
+
+### Update project
+PUT http://localhost:8000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Stuffed Elephant",
+    "category": "Toys",
+    "yarnType": "Cotton",
+    "yarnQty": "250 yards",
+    "needle": "J 6mm",
+    "picture": "",
+    "pattern": "There would be 3 pages of instructions here"
+}
+
+### Delete project
+DELETE http://localhost:8000/projects/6746c76ffcffbe849f177c6e

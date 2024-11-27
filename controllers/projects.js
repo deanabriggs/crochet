@@ -29,14 +29,16 @@ const getSingleProject = async (req, res) => {
 
 const createProject = async (req, res) => {
   // #swagger.tags=['Projects']
+  const { title, category, yarnType, yarnQty, needle, picture, pattern } =
+    req.body;
   const project = {
-    title: req.body.title,
-    category: req.body.category,
-    yarnType: req.body.yarnType,
-    yarnQty: req.body.yarnQty,
-    needle: req.body.needle,
-    picture: req.body.picture,
-    pattern: req.body.pattern,
+    title,
+    category,
+    yarnType,
+    yarnQty,
+    needle,
+    picture: picture || null,
+    pattern,
   };
   const response = await mongodb
     .getDb()
@@ -44,7 +46,10 @@ const createProject = async (req, res) => {
     .collection("projects")
     .insertOne(project);
   if (response.acknowledged) {
-    res.status(204).send();
+    res.status(201).json({
+      message: "Project created successfully",
+      project: { ...ObjectId, _id: response.insertId },
+    });
   } else {
     res
       .status(500)
@@ -55,22 +60,16 @@ const createProject = async (req, res) => {
 const updateProject = async (req, res) => {
   // #swagger.tags=['Projects']
   const projectId = new ObjectId(req.params.id);
-  const project = {
-    title: req.body.title,
-    category: req.body.category,
-    yarnType: req.body.yarnType,
-    yarnQty: req.body.yarnQty,
-    needle: req.body.needle,
-    picture: req.body.picture,
-    pattern: req.body.pattern,
-  };
+  const updateFields = req.body;
+
   const response = await mongodb
     .getDb()
     .db()
     .collection("projects")
-    .replaceOne({ _id: projectId }, project);
+    .updateOne({ _id: projectId }, { $set: updateFields });
+
   if (response.modifiedCount > 0) {
-    res.status(204).send();
+    res.status(200).send("Project updated successfully");
   } else {
     res
       .status(500)

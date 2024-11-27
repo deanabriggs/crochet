@@ -4,7 +4,7 @@ const contributorsCtrl = require("../controllers/contributors");
 const {
   contributorValidationRules,
   validate,
-} = require("../validation/validator");
+} = require("../utilities/validator");
 
 // Call functions for the specific request
 router.get("/", contributorsCtrl.getAllContributors);
