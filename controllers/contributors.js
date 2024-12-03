@@ -13,6 +13,9 @@ const getAllContributors = async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to retrieve contributors.", error: e.message });
   }
 };
 
@@ -20,18 +23,29 @@ const getAllContributors = async (req, res) => {
 const getSingleContributor = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
     const contributorId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
       .db()
       .collection("contributors")
       .find({ _id: contributorId });
+
+    if (!contributor) {
+      return res.status(404).json({ message: "Contribuor not found" });
+    }
+
     result.toArray().then((contributors) => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(contributors[0]);
     });
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to retrieve contributor.", error: e.message });
   }
 };
 
@@ -74,6 +88,9 @@ const createContributor = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to add contributor.", error: e.message });
   }
 };
 
@@ -98,6 +115,9 @@ const updateContributor = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to update contributor.", error: e.message });
   }
 };
 
@@ -119,6 +139,9 @@ const deleteContributor = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to delete contributor.", error: e.message });
   }
 };
 

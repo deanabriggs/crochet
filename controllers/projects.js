@@ -13,6 +13,9 @@ const getAllProjects = async (req, res) => {
     });
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to retrieve projects.", error: e.message });
   }
 };
 
@@ -20,18 +23,29 @@ const getAllProjects = async (req, res) => {
 const getSingleProject = async (req, res) => {
   // #swagger.tags=['Projects']
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
     const projectId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
       .db()
       .collection("projects")
       .find({ _id: projectId });
+
+    if (!project) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+
     result.toArray().then((projects) => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(projects[0]);
     });
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to retrieve project.", error: e.message });
   }
 };
 
@@ -66,6 +80,9 @@ const createProject = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to add project.", error: e.message });
   }
 };
 
@@ -90,6 +107,9 @@ const updateProject = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to update project.", error: e.message });
   }
 };
 
@@ -111,6 +131,9 @@ const deleteProject = async (req, res) => {
     }
   } catch (e) {
     console.error(e);
+    res
+      .status(500)
+      .json({ message: "Failed to delete project.", error: e.message });
   }
 };
 
