@@ -26,7 +26,7 @@ const getSingleContributor = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: "Invalid ID format" });
     }
-    const contributorId = new ObjectId(req.params.id);
+    const contributorId = req.params.id;
     const result = await mongodb
       .getDb()
       .db()
@@ -97,7 +97,7 @@ const createContributor = async (req, res) => {
 const updateContributor = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
-    const contributorId = new ObjectId(req.params.id);
+    const contributorId = req.params.id;
     const updateFields = req.body;
 
     const response = await mongodb
@@ -124,18 +124,24 @@ const updateContributor = async (req, res) => {
 const deleteContributor = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
-    const contributorId = new ObjectId(req.params.id);
+    const contributorId = req.params.id;
+
+    if (!ObjectId.isValid(contributorId)) {
+      return res.status(400).json({ message: "Invalid contributor ID." });
+    }
+
     const response = await mongodb
       .getDb()
       .db()
       .collection("contributors")
       .deleteOne({ _id: contributorId });
+
     if (response.deletedCount > 0) {
-      res.status(204).send("Contributor has been deleted.");
+      res.status(204).send();
     } else {
       res
-        .status(500)
-        .json(response.err || "An error occured while deleting contributor.");
+        .status(404)
+        .json({ message: "An error occured while deleting contributor." });
     }
   } catch (e) {
     console.error(e);

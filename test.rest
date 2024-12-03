@@ -63,7 +63,7 @@ content-type: application/json
 }
 
 ### Delete contributor
-DELETE http://localhost:8000/contributors/674eafc2b36adb40ab85bbed
+DELETE http://localhost:8000/contributors/674ebe2f6de803ebbd4d7654
 
 
 ##############################################################################
