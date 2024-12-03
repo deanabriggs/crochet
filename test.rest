@@ -1,8 +1,10 @@
+############################## LOCAL HOST #####################################
+
 ### Get all contributors
 GET http://localhost:8000/contributors
 
 ### Get a specific contributor
-GET http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2
+GET http://localhost:8000/contributors/67468ef67334db774aa554be
 
 ### Create contributor
 POST http://localhost:8000/contributors HTTP/1.1
@@ -18,7 +20,10 @@ content-type: application/json
     "qtyFollows": 90
 }
 
-###
+### Create contributor - to fail validation
+POST http://localhost:8000/contributors HTTP/1.1
+content-type: application/json
+
 {
     "firstName": "A",
     "lastName": "S",
@@ -30,7 +35,7 @@ content-type: application/json
 }
 
 ### Update contributor
-PUT http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2 HTTP/1.1
+PUT http://localhost:8000/contributors/67468ef67334db774aa554be HTTP/1.1
 content-type: application/json
 
 {
@@ -39,11 +44,14 @@ content-type: application/json
     "email": "patty@email.com",
     "phone": "9167771234",
     "joinDate": "2023-01-02",
-    "numOfProj": 6,
+    "numOfProj": 7,
     "qtyFollows": 90
 }
 
-###
+### Update contributor - to fail validation
+PUT http://localhost:8000/contributors/67468ef67334db774aa554be HTTP/1.1
+content-type: application/json
+
 {
     "firstName": "A",
     "lastName": "S",
@@ -55,7 +63,7 @@ content-type: application/json
 }
 
 ### Delete contributor
-DELETE http://localhost:8000/contributors/6744ac6b45e8c169fa7061a2 
+DELETE http://localhost:8000/contributors/67468ef67334db774aa554be 
 
 
 ##############################################################################
@@ -80,6 +88,20 @@ content-type: application/json
     "pattern": "There would be 3 pages of instructions here"
 }
 
+### Create project - to fail validation
+POST http://localhost:8000/projects HTTP/1.1
+content-type: application/json
+
+{
+    "title": "SE",
+    "category": "Junk",
+    "yarnType": "5",
+    "yarnQty": "250",
+    "needle": "",
+    "picture": "",
+    "pattern": "Insignificant"
+}
+
 ### Update project
 PUT http://localhost:8000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
 content-type: application/json
@@ -94,5 +116,153 @@ content-type: application/json
     "pattern": "There would be 3 pages of instructions here"
 }
 
+### Update project - to fail validation
+PUT http://localhost:8000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+content-type: application/json
+
+{
+    "title": "SE",
+    "category": "Junk",
+    "yarnType": "5",
+    "yarnQty": "250",
+    "needle": "",
+    "picture": "",
+    "pattern": "Insignificant"
+}
+
 ### Delete project
 DELETE http://localhost:8000/projects/6746c76ffcffbe849f177c6e
+
+
+#################################### LIVE SERVER ##########################################
+
+### Get all contributors
+GET https://crochet-1wd1.onrender.com/contributors
+
+### Get a specific contributor
+GET https://crochet-1wd1.onrender.com/contributors/6744ac6b45e8c169fa7061a2
+
+### Create contributor
+POST https://crochet-1wd1.onrender.com/contributors HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Patty",
+    "lastName": "Roberts",
+    "email": "patty@email.com",
+    "phone": "9167771234",
+    "joinDate": "2023-01-02",
+    "numOfProj": 6,
+    "qtyFollows": 90
+}
+
+### Create contributor - to fail validation
+POST https://crochet-1wd1.onrender.com/contributors HTTP/1.1
+content-type: application/json
+{
+    "firstName": "A",
+    "lastName": "S",
+    "email": "patty",
+    "phone": "916777123",
+    "joinDate": "adb",
+    "numOfProj": "a",
+    "qtyFollows": "b"
+}
+
+### Update contributor
+PUT https://crochet-1wd1.onrender.com/contributors/6744ac6b45e8c169fa7061a2 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Patty",
+    "lastName": "Roberts",
+    "email": "patty@email.com",
+    "phone": "9167771234",
+    "joinDate": "2023-01-02",
+    "numOfProj": 6,
+    "qtyFollows": 90
+}
+
+### Update contributor - to fail validation
+PUT https://crochet-1wd1.onrender.com/contributors/6744ac6b45e8c169fa7061a2 HTTP/1.1
+content-type: application/json
+{
+    "firstName": "A",
+    "lastName": "S",
+    "email": "patty",
+    "phone": "916777123",
+    "joinDate": "adb",
+    "numOfProj": "a",
+    "qtyFollows": "b"
+}
+
+### Delete contributor
+DELETE https://crochet-1wd1.onrender.com/contributors/6744ac6b45e8c169fa7061a2 
+
+
+##############################################################################
+
+### Get all projects
+GET https://crochet-1wd1.onrender.com/projects
+
+### Get a specific project
+GET https://crochet-1wd1.onrender.com/projects/6746c76ffcffbe849f177c6e
+
+### Create project
+POST https://crochet-1wd1.onrender.com/projects HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Stuffed Elephant",
+    "category": "Toys",
+    "yarnType": "Acrylic",
+    "yarnQty": "250 yards",
+    "needle": "I 5.5mm",
+    "picture": "",
+    "pattern": "There would be 3 pages of instructions here"
+}
+
+### Create project - to fail validation
+POST https://crochet-1wd1.onrender.com/projects HTTP/1.1
+content-type: application/json
+
+{
+    "title": "SE",
+    "category": "Junk",
+    "yarnType": "5",
+    "yarnQty": "250",
+    "needle": "",
+    "picture": "",
+    "pattern": "Insignificant"
+}
+
+### Update project
+PUT https://crochet-1wd1.onrender.com/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Stuffed Elephant",
+    "category": "Toys",
+    "yarnType": "Cotton",
+    "yarnQty": "250 yards",
+    "needle": "J 6mm",
+    "picture": "",
+    "pattern": "There would be 3 pages of instructions here"
+}
+
+### Update project - to fail validation
+PUT https://crochet-1wd1.onrender.com/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+content-type: application/json
+
+{
+    "title": "SE",
+    "category": "Junk",
+    "yarnType": "5",
+    "yarnQty": "250",
+    "needle": "",
+    "picture": "",
+    "pattern": "Insignificant"
+}
+
+### Delete project
+DELETE https://crochet-1wd1.onrender.com/projects/6746c76ffcffbe849f177c6e

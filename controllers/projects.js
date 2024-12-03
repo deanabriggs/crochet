@@ -5,92 +5,112 @@ const ObjectId = require("mongodb").ObjectId;
 // Define functions for obtaining specific data
 const getAllProjects = async (req, res) => {
   // #swagger.tags=['Projects']
-  const result = await mongodb.getDb().db().collection("projects").find();
-  result.toArray().then((projects) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(projects);
-  });
+  try {
+    const result = await mongodb.getDb().db().collection("projects").find();
+    result.toArray().then((projects) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(projects);
+    });
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 // Define functions for obtaining specific data
 const getSingleProject = async (req, res) => {
   // #swagger.tags=['Projects']
-  const projectId = new ObjectId(req.params.id);
-  const result = await mongodb
-    .getDb()
-    .db()
-    .collection("projects")
-    .find({ _id: projectId });
-  result.toArray().then((projects) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(projects[0]);
-  });
+  try {
+    const projectId = new ObjectId(req.params.id);
+    const result = await mongodb
+      .getDb()
+      .db()
+      .collection("projects")
+      .find({ _id: projectId });
+    result.toArray().then((projects) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(projects[0]);
+    });
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 const createProject = async (req, res) => {
   // #swagger.tags=['Projects']
-  const { title, category, yarnType, yarnQty, needle, picture, pattern } =
-    req.body;
-  const project = {
-    title,
-    category,
-    yarnType,
-    yarnQty,
-    needle,
-    picture: picture || null,
-    pattern,
-  };
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection("projects")
-    .insertOne(project);
-  if (response.acknowledged) {
-    res.status(201).json({
-      message: "Project created successfully",
-      project: { ...ObjectId, _id: response.insertId },
-    });
-  } else {
-    res
-      .status(500)
-      .json(response.err || "An error occurred while adding project.");
+  try {
+    const { title, category, yarnType, yarnQty, needle, picture, pattern } =
+      req.body;
+    const project = {
+      title,
+      category,
+      yarnType,
+      yarnQty,
+      needle,
+      picture: picture || null,
+      pattern,
+    };
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection("projects")
+      .insertOne(project);
+    if (response.acknowledged) {
+      res.status(201).json({
+        message: "Project created successfully",
+        project: { ...ObjectId, _id: response.insertId },
+      });
+    } else {
+      res
+        .status(500)
+        .json(response.err || "An error occurred while adding project.");
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 
 const updateProject = async (req, res) => {
   // #swagger.tags=['Projects']
-  const projectId = new ObjectId(req.params.id);
-  const updateFields = req.body;
+  try {
+    const projectId = new ObjectId(req.params.id);
+    const updateFields = req.body;
 
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection("projects")
-    .updateOne({ _id: projectId }, { $set: updateFields });
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection("projects")
+      .updateOne({ _id: projectId }, { $set: updateFields });
 
-  if (response.modifiedCount > 0) {
-    res.status(200).send("Project updated successfully");
-  } else {
-    res
-      .status(500)
-      .json(response.err || "An error occurred while updating project.");
+    if (response.modifiedCount > 0) {
+      res.status(200).send("Project updated successfully");
+    } else {
+      res
+        .status(500)
+        .json(response.err || "An error occurred while updating project.");
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 
 const deleteProject = async (req, res) => {
   // #swagger.tags=['Projects']
-  const projectId = new ObjectId(req.params.id);
-  const response = await mongodb
-    .getDb()
-    .db()
-    .collection("projects")
-    .deleteOne({ _id: projectId });
-  if (response.deletedCount > 0) {
-    res.status(204).send();
-  } else {
-    res
-      .status(500)
-      .json(response.err || "An error occured while deleting project.");
+  try {
+    const projectId = new ObjectId(req.params.id);
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection("projects")
+      .deleteOne({ _id: projectId });
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res
+        .status(500)
+        .json(response.err || "An error occured while deleting project.");
+    }
+  } catch (e) {
+    console.error(e);
   }
 };
 
