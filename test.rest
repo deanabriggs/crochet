@@ -4,7 +4,7 @@
 GET http://localhost:8000/contributors
 
 ### Get a specific contributor
-GET http://localhost:8000/contributors/67468ef67334db774aa554be
+GET http://localhost:8000/contributors/674eaa21de083589e9154283
 
 ### Create contributor
 POST http://localhost:8000/contributors HTTP/1.1
@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ### Update contributor
-PUT http://localhost:8000/contributors/67468ef67334db774aa554be HTTP/1.1
+PUT http://localhost:8000/contributors/674eaa21de083589e9154283HTTP/1.1
 content-type: application/json
 
 {
@@ -49,7 +49,7 @@ content-type: application/json
 }
 
 ### Update contributor - to fail validation
-PUT http://localhost:8000/contributors/67468ef67334db774aa554be HTTP/1.1
+PUT http://localhost:8000/contributors/674eaa21de083589e9154283 HTTP/1.1
 content-type: application/json
 
 {
@@ -63,7 +63,7 @@ content-type: application/json
 }
 
 ### Delete contributor
-DELETE http://localhost:8000/contributors/67468ef67334db774aa554be 
+DELETE http://localhost:8000/contributors/674eaa21de083589e9154283
 
 
 ##############################################################################

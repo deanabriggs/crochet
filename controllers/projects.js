@@ -103,7 +103,7 @@ const deleteProject = async (req, res) => {
       .collection("projects")
       .deleteOne({ _id: projectId });
     if (response.deletedCount > 0) {
-      res.status(204).send();
+      res.status(204).send("Project has been deleted.");
     } else {
       res
         .status(500)
