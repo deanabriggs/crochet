@@ -33,7 +33,7 @@ const getSingleProject = async (req, res) => {
       .collection("projects")
       .find({ _id: projectId });
 
-    if (!project) {
+    if (!result) {
       return res.status(404).json({ message: "Project not found" });
     }
 

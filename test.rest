@@ -4,7 +4,7 @@
 GET http://localhost:8000/contributors
 
 ### Get a specific contributor
-GET http://localhost:8000/contributors/674eaf6eb36adb40ab85bbec
+GET http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc
 
 ### Create contributor
 POST http://localhost:8000/contributors HTTP/1.1

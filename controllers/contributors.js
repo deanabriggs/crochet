@@ -33,7 +33,7 @@ const getSingleContributor = async (req, res) => {
       .collection("contributors")
       .find({ _id: contributorId });
 
-    if (!contributor) {
+    if (!result) {
       return res.status(404).json({ message: "Contribuor not found" });
     }
 
