@@ -26,7 +26,7 @@ const getSingleProject = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: "Invalid ID format" });
     }
-    const projectId = req.params.id;
+    const projectId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
       .db()
@@ -89,7 +89,7 @@ const createProject = async (req, res) => {
 const updateProject = async (req, res) => {
   // #swagger.tags=['Projects']
   try {
-    const projectId = req.params.id;
+    const projectId = new ObjectId(req.params.id);
     const updateFields = req.body;
 
     const response = await mongodb
@@ -116,7 +116,7 @@ const updateProject = async (req, res) => {
 const deleteProject = async (req, res) => {
   // #swagger.tags=['Projects']
   try {
-    const projectId = req.params.id;
+    const projectId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()
       .db()

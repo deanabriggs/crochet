@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ### Update contributor
-PUT http://localhost:8000/contributors/674eafc2b36adb40ab85bbed HTTP/1.1
+PUT http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
 content-type: application/json
 
 {
@@ -49,7 +49,7 @@ content-type: application/json
 }
 
 ### Update contributor - to fail validation
-PUT http://localhost:8000/contributors/674eafc2b36adb40ab85bbed HTTP/1.1
+PUT http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
 content-type: application/json
 
 {
@@ -63,7 +63,7 @@ content-type: application/json
 }
 
 ### Delete contributor
-DELETE http://localhost:8000/contributors/674ebe2f6de803ebbd4d7654
+DELETE http://localhost:8000/contributors/674ec2e146025506303f5801
 
 
 ##############################################################################

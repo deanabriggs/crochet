@@ -26,7 +26,7 @@ const getSingleContributor = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
       return res.status(400).json({ message: "Invalid ID format" });
     }
-    const contributorId = req.params.id;
+    const contributorId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
       .db()
@@ -97,7 +97,7 @@ const createContributor = async (req, res) => {
 const updateContributor = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
-    const contributorId = req.params.id;
+    const contributorId = new ObjectId(req.params.id);
     const updateFields = req.body;
 
     const response = await mongodb
@@ -124,7 +124,7 @@ const updateContributor = async (req, res) => {
 const deleteContributor = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
-    const contributorId = req.params.id;
+    const contributorId = new ObjectId(req.params.id);
 
     if (!ObjectId.isValid(contributorId)) {
       return res.status(400).json({ message: "Invalid contributor ID." });
