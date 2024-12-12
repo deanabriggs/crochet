@@ -1,7 +1,7 @@
 // Requipre resources
 const router = require("express").Router();
 const projectsCtrl = require("../controllers/projects");
-const { projectValidationRules, validate } = require("../utilities/validator");
+const { projectValidationRules, validate } = require("../middleware/validator");
 
 // Call functions for the specific request
 router.get("/", projectsCtrl.getAllProjects);

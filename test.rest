@@ -1,13 +1,13 @@
 ############################## LOCAL HOST #####################################
 
 ### Get all contributors
-GET http://localhost:8000/contributors
+GET http://localhost:3000/contributors
 
 ### Get a specific contributor
-GET http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc
+GET http://localhost:3000/contributors/6674ec224ddbf5d322357e251
 
 ### Create contributor
-POST http://localhost:8000/contributors HTTP/1.1
+POST http://localhost:3000/contributors HTTP/1.1
 content-type: application/json
 
 {
@@ -21,7 +21,7 @@ content-type: application/json
 }
 
 ### Create contributor - to fail validation
-POST http://localhost:8000/contributors HTTP/1.1
+POST http://localhost:3000/contributors HTTP/1.1
 content-type: application/json
 
 {
@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ### Update contributor
-PUT http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
+PUT http://localhost:3000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
 content-type: application/json
 
 {
@@ -49,7 +49,7 @@ content-type: application/json
 }
 
 ### Update contributor - to fail validation
-PUT http://localhost:8000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
+PUT http://localhost:3000/contributors/674eb2240c9fd659f94e9cdc HTTP/1.1
 content-type: application/json
 
 {
@@ -63,19 +63,19 @@ content-type: application/json
 }
 
 ### Delete contributor
-DELETE http://localhost:8000/contributors/674ec2e146025506303f5801
+DELETE http://localhost:3000/contributors/674ec2e146025506303f5801
 
 
 ##############################################################################
 
 ### Get all projects
-GET http://localhost:8000/projects
+GET http://localhost:3000/projects
 
 ### Get a specific project
-GET http://localhost:8000/projects/6746c76ffcffbe849f177c6
+GET http://localhost:3000/projects/6746c76ffcffbe849f177c6
 
 ### Create project
-POST http://localhost:8000/projects HTTP/1.1
+POST http://localhost:3000/projects HTTP/1.1
 content-type: application/json
 
 {
@@ -89,7 +89,7 @@ content-type: application/json
 }
 
 ### Create project - to fail validation
-POST http://localhost:8000/projects HTTP/1.1
+POST http://localhost:3000/projects HTTP/1.1
 content-type: application/json
 
 {
@@ -103,7 +103,7 @@ content-type: application/json
 }
 
 ### Update project
-PUT http://localhost:8000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+PUT http://localhost:3000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
 content-type: application/json
 
 {
@@ -117,7 +117,7 @@ content-type: application/json
 }
 
 ### Update project - to fail validation
-PUT http://localhost:8000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
+PUT http://localhost:3000/projects/6746c76ffcffbe849f177c6e HTTP/1.1
 content-type: application/json
 
 {
@@ -131,7 +131,7 @@ content-type: application/json
 }
 
 ### Delete project
-DELETE http://localhost:8000/projects/6746c76ffcffbe849f177c6e
+DELETE http://localhost:3000/projects/6746c76ffcffbe849f177c6e
 
 
 #################################### LIVE SERVER ##########################################

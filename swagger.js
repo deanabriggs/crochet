@@ -7,7 +7,7 @@ const doc = {
     description: "Crochet Projects API",
   },
   host: "crochet-1wd1.onrender.com",
-  schemes: "https",
+  schemes: ["https", "http"],
 };
 
 const outputFile = "./swagger.json";
