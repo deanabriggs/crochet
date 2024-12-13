@@ -1,3 +1,5 @@
+// server.js
+
 // Require resources
 const express = require("express");
 const mongodb = require("./data/database");
@@ -20,7 +22,7 @@ app
     session({
       secret: "secret",
       resave: false,
-      saveUninitialized: true,
+      saveUninitialized: false,
     })
   )
   .use(passport.session())
@@ -73,7 +75,7 @@ app.get("/", (req, res) => {
 app.get(
   "/github/callback",
   passport.authenticate("github", {
-    failureRedirect: "api-docs",
+    failureRedirect: "/api-docs",
     session: false,
   }),
   (req, res) => {

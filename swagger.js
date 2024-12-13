@@ -1,3 +1,5 @@
+// swagger.js
+
 // Require resources
 const swaggerAutogen = require("swagger-autogen")();
 
