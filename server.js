@@ -70,6 +70,18 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: "api-docs",
+    session: false,
+  }),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect("/");
+  }
+);
+
 // Connect to Database and listen on Port
 mongodb.initDb((err) => {
   if (err) {

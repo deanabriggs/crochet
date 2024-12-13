@@ -2,12 +2,6 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-// Home page route
-router.get("/", (req, res) => {
-  // #swagger.tags=['Home Page']
-  res.send("Home Page");
-});
-
 // Sub-routes
 router.use("/contributors", require("./contributors"));
 router.use("/projects", require("./projects"));
