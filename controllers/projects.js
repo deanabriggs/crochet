@@ -7,6 +7,11 @@ const getAllProjects = async (req, res) => {
   // #swagger.tags=['Projects']
   try {
     const result = await mongodb.getDb().db().collection("projects").find();
+
+    if (!result) {
+      return res.status(404).json({ message: "Failed to retrieve projects." });
+    }
+
     result.toArray().then((projects) => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(projects);

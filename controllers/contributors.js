@@ -7,6 +7,11 @@ const getAllContributors = async (req, res) => {
   // #swagger.tags=['Contributors']
   try {
     const result = await mongodb.getDb().db().collection("contributors").find();
+
+    if (!result) {
+      return res.status(404).json({ message: "Failed to retrieve projects." });
+    }
+
     result.toArray().then((contributors) => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).json(contributors);
@@ -76,6 +81,7 @@ const createContributor = async (req, res) => {
       .db()
       .collection("contributors")
       .insertOne(contributor);
+
     if (response.acknowledged) {
       res.status(201).json({
         message: "Contributor created successfully",
